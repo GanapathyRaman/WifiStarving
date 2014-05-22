@@ -1,0 +1,7 @@
+i=2; 
+while [ $i -le 10 ] 
+do 
+  ./waf --run "scratch/3b --nSt=$i" > output.txt
+  i=`expr $i + 2` 
+done
+ 

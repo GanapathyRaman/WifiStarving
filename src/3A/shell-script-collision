@@ -1,0 +1,24 @@
+i=2; 
+while [ $i -le 10 ] 
+do 
+  ./waf --run "scratch/3a --nSt=$i" > output.txt 2>&1
+  echo "Sta:$i" >> result.txt
+  echo "--------" >> result.txt
+  rts=`grep rts output.txt |wc -l`
+  echo "rts:$rts" >> result.txt
+  cts=`grep 'missed cts' output.txt |wc -l` >> result.txt
+  echo "cts:$cts" >> result.txt
+  pcc=`echo "scale=6;$cts/$rts" | bc` >> result.txt
+  echo "Sta:$i  Pc:$pcc" >> result.txt
+  RxErr=`grep 'RXERROR' output.txt |wc -l` >> result.txt
+  echo "RxErr:$RxErr" >> result.txt
+  RxOk=`grep 'RXOK' output.txt |wc -l` >> result.txt
+  echo "RxOk:$RxOk" >> result.txt
+  numer=`echo "2*$RxErr" | bc`
+  dRxOk=`echo "$RxOk/2" | bc`
+  denom=`echo "$numer+$dRxOk" | bc`
+  prob=`echo "scale=6;$numer/$denom" | bc`
+  echo "Prob:$prob" >> result.txt
+  i=`expr $i + 2` 
+done
+ 

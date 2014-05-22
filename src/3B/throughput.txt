@@ -1,0 +1,8 @@
+No of Sources: 2   Average Throughput:  1.9238
+No of Sources: 4   Average Throughput:  0.980032
+No of Sources: 5   Average Throughput:  0.777269
+No of Sources: 6   Average Throughput:  0.654918
+No of Sources: 7   Average Throughput:  0.554011
+No of Sources: 8   Average Throughput:  0.48962
+No of Sources: 10   Average Throughput:  0.389805
+
